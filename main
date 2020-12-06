@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Welcome to our Sorting Algorithm Comparison Program\n";
+    cout << "What kind of dataset would you like to analyze?\n";
+    cout << "1. Left Skew\n";
+    cout << "2. Right Skew\n";
+    cout << "3. Unskewed\n";
+    cout << "Enter number option\n";
+
+    int input;
+    cin >> input;
+
+    if (input == 1)
+    {
+        //display sorting times for left skew dataset
+    }
+    else if (input == 2)
+    {
+        //display sorting times for right skew dataset
+
+    }
+    else if (input == 3)
+    { 
+        //display sorting times for unskewed dataset
+
+    }
+
+    cout << "Alright, which sorting algorithm(s) would you like to run?\n";
+    cout << "1. Bubble Sort\n";
+    cout << "2. Selection Sort\n";
+    cout << "3. Merge Sort\n";
+    cout << "4. Quick Sort\n";
+    cout << "5. All of the above\n";
+    cout << "Enter number option\n";
+
+    int input;
+    cin >> input;
+
+    if (input == 1)
+    {
+        //display sorting times for bubble sort
+    }
+    else if (input == 2)
+    {
+        //display sorting times for selection sort
+
+    }
+    else if (input == 3)
+    {
+        //display sorting times for merge sort
+    }
+    else if (input == 4)
+    {
+        //display sorting times for quick sort
+    }
+    else if (input == 3)
+    {
+        //display sorting times for alll of the above
+    }
+    return 0;
+}
