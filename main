@@ -104,7 +104,7 @@ int main()
     {
         displayQuickSortTime();
     }
-    else if (input == 3)
+    else if (input == 5)
     {
         //display sorting times for all of the above
         displayQuickSortTime();
