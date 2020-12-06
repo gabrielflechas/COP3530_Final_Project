@@ -76,16 +76,20 @@ int partition(int array[], int low, int  high) {
 }
 
 quickSort(int arr[], int low, int high) {
-
-    clock_t start = clock();
     if (low < high) {
         int pivot = partition(arr, low, high);
         quickSort(arr, low, pivot - 1);
         quickSort(arr, pivot + 1, high);
     }
-     clock_t end = clock();
-    clock_t timeElapsed = end - start;
-    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
+}
+
+void displayQuickSortTime(){
+auto startTime = std::chrono::high_resolution_clock::now();
+quickSort();
+auto endTime = std::chrono::high_resolution_clock::now();
+        
+auto sortingTime = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+cout << sortingTime; 
 }
 
 int main()
@@ -100,21 +104,9 @@ int main()
     int input;
     cin >> input;
 
-    if (input == 1)
-    {
-        //display sorting times for left skew dataset
-    }
-    else if (input == 2)
-    {
-        //display sorting times for right skew dataset
-
-    }
-    else if (input == 3)
-    { 
-        //display sorting times for unskewed dataset
-
-    }
-
+    // GET ARRAY
+    // int arr[] = newArray or whatever
+    //also need size of array (size)
     cout << "Alright, which sorting algorithm(s) would you like to run?\n";
     cout << "1. Bubble Sort\n";
     cout << "2. Selection Sort\n";
@@ -123,29 +115,32 @@ int main()
     cout << "5. All of the above\n";
     cout << "Enter number option\n";
 
-    int input;
-    cin >> input;
+    int input2;
+    cin >> input2;
 
-    if (input == 1)
+    if (input2 == 1)
     {
-        //display sorting times for bubble sort
+        bubbleSort(arr, size);
     }
-    else if (input == 2)
+    else if (input2 == 2)
     {
-        //display sorting times for selection sort
+        selectionSort(arr, size);
 
     }
-    else if (input == 3)
+    else if (input2 == 3)
     {
         //display sorting times for merge sort
     }
-    else if (input == 4)
+    else if (input2 == 4)
     {
-      quickSort(int arr[], int low, int high);
+        displayQuickSortTime();
     }
-    else if (input == 5)
+    else if (input2 == 5)
     {
-       quickSort(int arr[], int low, int high);
+        //display sorting times for all of the above
+        bubbleSort(arr, size);
+        selectionSort(arr, size);
+        displayQuickSortTime();
     }
     return 0;
 }
