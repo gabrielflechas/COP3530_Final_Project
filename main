@@ -1,5 +1,53 @@
 #include <iostream>
+#include <chrono>
 using namespace std;
+
+void swap(int* a, int* b) {
+    int swap = *a;
+    *a = *b;
+    *b = swap;
+}
+
+int partition(int array[], int low, int  high) {
+    int pivot = array[low]; int up = low; int down = high;
+
+    while (down > up) {
+        for (int i = up; i < high, i++) {
+            if (array[up > pivot]) {
+                break;
+                up = up + 1;
+            }
+        }
+        for (int i = up; i > low; i--) {
+            if (array[down] < pivot) {
+                break;
+                down = down - 1;
+            }
+        }
+        if (up < down) {
+            swap(array[up], array[down]);
+            swap(array[low], array[down]);
+        }
+    }
+    return down;
+}
+
+quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivot = partition(arr, low, high);
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
+    }
+}
+
+void displayQuickSortTime(){
+auto startTime = std::chrono::high_resolution_clock::now();
+quickSort();
+auto endTime = std::chrono::high_resolution_clock::now();
+        
+auto sortingTime = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+cout << sortingTime; 
+}
 
 int main()
 {
@@ -41,7 +89,6 @@ int main()
 
     if (input == 1)
     {
-        cout << "hi kat" << endl;
         //display sorting times for bubble sort
     }
     else if (input == 2)
@@ -55,11 +102,12 @@ int main()
     }
     else if (input == 4)
     {
-        //display sorting times for quick sort
+        displayQuickSortTime();
     }
     else if (input == 3)
     {
-        //display sorting times for alll of the above
+        //display sorting times for all of the above
+        displayQuickSortTime();
     }
     return 0;
 }
