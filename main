@@ -41,6 +41,7 @@ int main()
 
     if (input == 1)
     {
+        cout << "hi kat" << endl;
         //display sorting times for bubble sort
     }
     else if (input == 2)
