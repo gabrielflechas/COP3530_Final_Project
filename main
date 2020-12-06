@@ -76,20 +76,15 @@ int partition(int array[], int low, int  high) {
 }
 
 quickSort(int arr[], int low, int high) {
+  clock_t start = clock();
     if (low < high) {
         int pivot = partition(arr, low, high);
         quickSort(arr, low, pivot - 1);
         quickSort(arr, pivot + 1, high);
     }
-}
-
-void displayQuickSortTime(){
-auto startTime = std::chrono::high_resolution_clock::now();
-quickSort();
-auto endTime = std::chrono::high_resolution_clock::now();
-        
-auto sortingTime = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-cout << sortingTime; 
+    clock_t end = clock();
+    clock_t timeElapsed = end - start;
+    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 int main()
@@ -133,7 +128,7 @@ int main()
     }
     else if (input2 == 4)
     {
-        displayQuickSortTime();
+       quickSort(arr, low, high);
     }
     else if (input2 == 5)
     {
