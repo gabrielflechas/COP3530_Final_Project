@@ -2,6 +2,49 @@
 #include <chrono>
 using namespace std;
 
+void selectionSort(int arr[], int size) {
+    int minVal;
+    int temp;
+
+    clock_t start = clock();
+    for (int i = 0; i < size; i++) {
+        minVal = i;
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[minVal]) {
+                minVal = j;
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[minVal];
+        arr[minVal] = temp;
+    }
+    clock_t end = clock();
+    clock_t timeElapsed = end - start;
+    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
+}
+
+void bubbleSort(int arr[], int size) {
+    int temp;
+    bool check = true;
+    clock_t start = clock();
+    while (check == true) {
+        check = false;
+        for (int i = 0; i < size; i++) {
+            if (i != size - 1) {
+                if (arr[i] > arr[i + 1]) {
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    check = true;
+                }
+            }
+        }
+    }
+    clock_t end = clock();
+    clock_t timeElapsed = end - start;
+    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
+}
+
 void swap(int* a, int* b) {
     int swap = *a;
     *a = *b;
