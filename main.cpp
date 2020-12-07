@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <fstream>
+#include <random>
 using namespace std;
 
 void selectionSort(int arr[], int size) {
@@ -137,9 +138,9 @@ int main()
 {
     cout << "Welcome to our Sorting Algorithm Comparison Program\n";
     cout << "What kind of dataset would you like to analyze?\n";
-    cout << "1. Left Skew\n";
-    cout << "2. Right Skew\n";
-    cout << "3. Unskewed\n";
+    cout << "1. Random\n";
+    cout << "2. Binomial Distribution\n";
+    cout << "3. Geometric Distribution\n";
     cout << "Enter number option\n";
 
     int input;
@@ -149,12 +150,42 @@ int main()
     const int size = 100000;
     int arr[size];
     
+    random_device rd;
+    mt19937 gen(rd());
+    
     srand(time(nullptr));
     ofstream myfile ("data.csv");
     if (myfile.is_open())
     {
-        for(int i = 0; i < size; i++){
-            myfile << rand() <<" \n";
+        if(input==1){
+            for(int i = 0; i < size; i++){
+
+                myfile << rand() <<" \n";
+            }
+        }
+        else if (input==2){
+            int t;
+            double p;
+            cout << "Enter an integer value for t distribution (where 0 <= t): ";
+            cin >> t;
+            cout << "Enter a double value for p distribution (where 0.0 <= p <= 1.0): ";
+            cin >> p;
+            binomial_distribution<> distr(t, p);
+            for(int i = 0; i < size; i++){
+
+                myfile << distr(gen) <<" \n";
+            }
+
+        }
+        else if (input==3){
+            double p;
+            cout << "Enter a double value for p distribution (where 0.0 <= p <= 1.0): ";
+            cin >> p;
+            geometric_distribution<> distr(p);
+            for(int i = 0; i < size; i++){
+
+                myfile << distr(gen) <<" \n";
+            }
         }
         myfile.close();
     }
