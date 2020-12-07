@@ -7,8 +7,6 @@ using namespace std;
 void selectionSort(int arr[], int size) {
     int minVal;
     int temp;
-
-    clock_t start = clock();
     for (int i = 0; i < size; i++) {
         minVal = i;
         for (int j = i + 1; j < size; j++) {
@@ -20,15 +18,11 @@ void selectionSort(int arr[], int size) {
         arr[i] = arr[minVal];
         arr[minVal] = temp;
     }
-    clock_t end = clock();
-    clock_t timeElapsed = end - start;
-    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 void bubbleSort(int arr[], int size) {
     int temp;
     bool check = true;
-    clock_t start = clock();
     while (check == true) {
         check = false;
         for (int i = 0; i < size; i++) {
@@ -42,9 +36,6 @@ void bubbleSort(int arr[], int size) {
             }
         }
     }
-    clock_t end = clock();
-    clock_t timeElapsed = end - start;
-    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 void merge(int arr[], int l,int m, int r){
@@ -240,12 +231,19 @@ int main()
     else if (input2 == 5)
     {
         //display sorting times for all of the above
-        bubbleSort(arr, size);
-        selectionSort(arr, size);
-
         auto t1 = chrono::high_resolution_clock::now();
+        bubbleSort(arr, size);
+        auto t2 = chrono::high_resolution_clock::now();
+        cout << "Bubble Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
+        
+        t1 = chrono::high_resolution_clock::now();
+        selectionSort(arr, size);
+        t2 = chrono::high_resolution_clock::now();
+        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n;
+
+        t1 = chrono::high_resolution_clock::now();
         mergeSort(arr, 0, size-1);
-        auto t2 = chrono::high_resolution_clock::now();   
+        t2 = chrono::high_resolution_clock::now();   
         cout << "Merge Sort took "
               << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
               << " milliseconds\n";
