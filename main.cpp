@@ -83,11 +83,11 @@ void mergeSort(int arr[], int l, int r){
     }
 }
 
-void swap(int* a, int* b) {
-    int swap = *a;
-    *a = *b;
-    *b = swap;
-}
+// void swap(int* a, int* b) {
+//     int swap = *a;
+//     *a = *b;
+//     *b = swap;
+// }
 
 int partition(int array[], int low, int  high) {
     int pivot = array[low]; int up = low; int down = high;
@@ -96,14 +96,14 @@ int partition(int array[], int low, int  high) {
         for (int i = up; i < high; i++) {
             if (array[up] > pivot) {
                 break;
-                up = up + 1;
             }
+            up = up + 1;
         }
-        for (int i = up; i > low; i--) {
+        for (int i = high; i > low; i--) {
             if (array[down] < pivot) {
                 break;
-                down = down - 1;
             }
+             down = down - 1;
         }
         if (up < down) {
             swap(array[up], array[down]);
