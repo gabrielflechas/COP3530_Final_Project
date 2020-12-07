@@ -83,11 +83,6 @@ void mergeSort(int arr[], int l, int r){
     }
 }
 
-// void swap(int* a, int* b) {
-//     int swap = *a;
-//     *a = *b;
-//     *b = swap;
-// }
 
 int partition(int array[], int low, int  high) {
     int pivot = array[low]; int up = low; int down = high;
@@ -114,15 +109,11 @@ int partition(int array[], int low, int  high) {
 }
 
 void quickSort(int arr[], int low, int high) {
-  clock_t start = clock();
     if (low < high) {
         int pivot = partition(arr, low, high);
         quickSort(arr, low, pivot - 1);
         quickSort(arr, pivot + 1, high);
     }
-    clock_t end = clock();
-    clock_t timeElapsed = end - start;
-    std::cout << (float)timeElapsed / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 int main()
@@ -208,11 +199,17 @@ int main()
 
     if (input2 == 1)
     {
+        auto t1 = chrono::high_resolution_clock::now();
         bubbleSort(arr, size);
+        auto t2 = chrono::high_resolution_clock::now();
+        cout << "Bubble Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
     }
     else if (input2 == 2)
     {
+         t1 = chrono::high_resolution_clock::now();
         selectionSort(arr, size);
+        t2 = chrono::high_resolution_clock::now();
+        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n;
 
     }
     else if (input2 == 3)
@@ -226,7 +223,12 @@ int main()
     }
     else if (input2 == 4)
     {
-       quickSort(arr, 0, size-1);
+        t1 = chrono::high_resolution_clock::now();
+        quickSort(arr, 0, size-1);
+        t2 = chrono::high_resolution_clock::now();   
+        cout << "Quick Sort took "
+              << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
+              << " milliseconds\n";
     }
     else if (input2 == 5)
     {
