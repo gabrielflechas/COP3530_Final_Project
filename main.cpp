@@ -206,10 +206,10 @@ int main()
     }
     else if (input2 == 2)
     {
-         t1 = chrono::high_resolution_clock::now();
+        auto t1 = chrono::high_resolution_clock::now();
         selectionSort(arr, size);
-        t2 = chrono::high_resolution_clock::now();
-        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n;
+        auto t2 = chrono::high_resolution_clock::now();
+        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
 
     }
     else if (input2 == 3)
@@ -223,9 +223,9 @@ int main()
     }
     else if (input2 == 4)
     {
-        t1 = chrono::high_resolution_clock::now();
+        auto t1 = chrono::high_resolution_clock::now();
         quickSort(arr, 0, size-1);
-        t2 = chrono::high_resolution_clock::now();   
+        auto t2 = chrono::high_resolution_clock::now();   
         cout << "Quick Sort took "
               << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
               << " milliseconds\n";
@@ -241,7 +241,7 @@ int main()
         t1 = chrono::high_resolution_clock::now();
         selectionSort(arr, size);
         t2 = chrono::high_resolution_clock::now();
-        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n;
+        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
 
         t1 = chrono::high_resolution_clock::now();
         mergeSort(arr, 0, size-1);
