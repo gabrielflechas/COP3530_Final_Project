@@ -103,7 +103,7 @@ int partition(int array[], int low, int  high) {
 
     while (down > up) {
         for (int i = up; i < high; i++) {
-            if (array[up > pivot]) {
+            if (array[up] > pivot) {
                 break;
                 up = up + 1;
             }
