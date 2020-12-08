@@ -102,10 +102,10 @@ int partition(int array[], int low, int  high) {
              down = down - 1;
         }
         if (up < down) {
-            swap(&array[up], &array[down]);
+            swap(array[up], array[down]);
         }
     }
-     swap(&array[low], &array[down]);
+     swap(array[low], array[down]);
     return down;
 }
 
@@ -138,6 +138,8 @@ int main()
     
     srand(time(nullptr));
     ofstream myfile ("data.csv");
+
+    //generate data in data file
     if (myfile.is_open())
     {
         if(input==1){
@@ -195,68 +197,63 @@ int main()
     cout << "5. All of the above\n";
     cout << "Enter number option\n";
 
-    int input2;
-    cin >> input2;
+    while(true){
 
-    if (input2 == 1)
-    {
-        auto t1 = chrono::high_resolution_clock::now();
-        bubbleSort(arr, size);
-        auto t2 = chrono::high_resolution_clock::now();
-        cout << "Bubble Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
-    }
-    else if (input2 == 2)
-    {
-        auto t1 = chrono::high_resolution_clock::now();
-        selectionSort(arr, size);
-        auto t2 = chrono::high_resolution_clock::now();
-        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
-
-    }
-    else if (input2 == 3)
-    {
-        auto t1 = chrono::high_resolution_clock::now();
-        mergeSort(arr, 0, size-1);
-        auto t2 = chrono::high_resolution_clock::now();   
-        cout << "Merge Sort took "
-              << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
-              << " milliseconds\n";
-    }
-    else if (input2 == 4)
-    {
-        auto t1 = chrono::high_resolution_clock::now();
-        quickSort(arr, 0, size-1);
-        auto t2 = chrono::high_resolution_clock::now();   
-        cout << "Quick Sort took "
-              << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
-              << " milliseconds\n";
-    }
-    else if (input2 == 5)
-    {
-        //display sorting times for all of the above
-        auto t1 = chrono::high_resolution_clock::now();
-        bubbleSort(arr, size);
-        auto t2 = chrono::high_resolution_clock::now();
-        cout << "Bubble Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
+        int input2;
+        cin >> input2;
         
-        t1 = chrono::high_resolution_clock::now();
-        selectionSort(arr, size);
-        t2 = chrono::high_resolution_clock::now();
-        cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
+        //fill array from data file
+        ifstream infile("data.csv");
+        if (infile.is_open())
+        {
+            string line;
+            int i = 0;
+            while (getline(infile,line))
+            {
+                arr[i]=stoi(line);
+                i++;
+            }
+            infile.close();
+        }
 
-        t1 = chrono::high_resolution_clock::now();
-        mergeSort(arr, 0, size-1);
-        t2 = chrono::high_resolution_clock::now();   
-        cout << "Merge Sort took "
-              << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
-              << " milliseconds\n";
-        
-        t1 = chrono::high_resolution_clock::now();
-        quickSort(arr, 0, size-1);
-        t2 = chrono::high_resolution_clock::now();   
-        cout << "Quick Sort took "
-              << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
-              << " milliseconds\n";
+        if (input2 == 1)
+        {
+            auto t1 = chrono::high_resolution_clock::now();
+            bubbleSort(arr, size);
+            auto t2 = chrono::high_resolution_clock::now();
+            cout << "Bubble Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
+        }
+        else if (input2 == 2)
+        {
+            auto t1 = chrono::high_resolution_clock::now();
+            selectionSort(arr, size);
+            auto t2 = chrono::high_resolution_clock::now();
+            cout <<"Selection Sort took " << chrono::duration_cast<chrono::milliseconds>(t2-t1).count() << " milliseconds\n";
+
+        }
+        else if (input2 == 3)
+        {
+            auto t1 = chrono::high_resolution_clock::now();
+            mergeSort(arr, 0, size-1);
+            auto t2 = chrono::high_resolution_clock::now();   
+            cout << "Merge Sort took "
+                << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
+                << " milliseconds\n";
+        }
+        else if (input2 == 4)
+        {
+            auto t1 = chrono::high_resolution_clock::now();
+            quickSort(arr, 0, size-1);
+            auto t2 = chrono::high_resolution_clock::now();   
+            cout << "Quick Sort took "
+                << chrono::duration_cast<chrono::milliseconds>(t2-t1).count()
+                << " milliseconds\n";
+        }
+        else if (input2 == 5)
+        {
+            //exit program
+            break;
+        }
     }
     return 0;
 }
