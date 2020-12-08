@@ -84,52 +84,31 @@ void mergeSort(int arr[], int l, int r){
 }
 
 
-// int partition(int array[], int low, int  high) {
-//     int pivot = array[low]; int up = low; int down = high;
+int partition(int array[], int low, int  high) {
+    int pivot = array[low]; 
+    int up = low; 
+    int down = high;
 
-//     while (down > up) {
-//         for (int i = up; i < high; i++) {
-//             if (array[up] > pivot) {
-//                 break;
-//             }
-//             up = up + 1;
-//         }
-//         for (int i = high; i > low; i--) {
-//             if (array[down] < pivot) {
-//                 break;
-//             }
-//              down = down - 1;
-//         }
-//         if (up < down) {
-//             swap(array[up], array[down]);
-//         }
-//     }
-//     swap(array[low], array[down]);
-//     return down;
-// }
-
-// void quickSort(int arr[], int low, int high) {
-//     if (low < high) {
-//         int pivot = partition(arr, low, high);
-//         quickSort(arr, low, pivot - 1);
-//         quickSort(arr, pivot + 1, high);
-//     }
-// }
-
-int partition(int array[], int low, int high){
-    int pivot = array[high];
-    int smallerIndex = (low - 1;);
-    
-    for( int i = low; i <= high - 1; i++){
-        if(array[i] <= pivot){
-            smallerIndex = smallerIndex + 1;
-            swap(&array[smallerIndex], &array[i]);
+    while (up < down) {
+        for (int i = up; i < high; i++) {
+            if (array[up] > pivot) {
+                break;
+            }
+            up = up + 1;
+        }
+        for (int i = high; i > low; i--) {
+            if (array[down] < pivot) {
+                break;
+            }
+             down = down - 1;
+        }
+        if (up < down) {
+            swap(array[up], array[down]);
         }
     }
-    swap(&array[smallerIndex + 1], &array[high]);
-    return(smallerIndex + 1);
+    swap(array[low], array[down]);
+    return down;
 }
-
 
 void quickSort(int arr[], int low, int high) {
     if (low < high) {
