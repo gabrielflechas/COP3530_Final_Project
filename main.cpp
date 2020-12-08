@@ -104,9 +104,9 @@ int partition(int array[], int low, int  high) {
         }
         if (up < down) {
             swap(array[up], array[down]);
+            swap(array[low], array[down]);
         }
     }
-    swap(array[low], array[down]);
     return down;
 }
 
