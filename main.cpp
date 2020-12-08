@@ -194,14 +194,14 @@ int main()
     cout << "2. Selection Sort\n";
     cout << "3. Merge Sort\n";
     cout << "4. Quick Sort\n";
-    cout << "5. All of the above\n";
+    cout << "5. Exit Program\n";
     cout << "Enter number option\n";
 
     while(true){
 
         int input2;
         cin >> input2;
-        
+
         //fill array from data file
         ifstream infile("data.csv");
         if (infile.is_open())
